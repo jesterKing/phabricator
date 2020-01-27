@@ -8,10 +8,10 @@ services:
      - "62022:22"
      - "62024:24"
     volumes:
-     - /Users/Shared/dev/dockerphabricator/srv/docker/phabricator/repos:/repos
-     - /Users/Shared/dev/dockerphabricator/srv/docker/phabricator/keys:/srv/keys
-     - /Users/Shared/dev/dockerphabricator/srv/docker/phabricator/phabricator:/srv/phabricator
-     - /Users/Shared/dev/dockerphabricator/srv/docker/phabricator/extensions:/srv/phabricator/phabricator/src/extensions
+     - VOLUMESROOT/repos:/repos
+     - VOLUMESROOT/keys:/srv/keys
+     - VOLUMESROOT/phabricator:/srv/phabricator
+     - VOLUMESROOT/extensions:/srv/phabricator/phabricator/src/extensions
     depends_on:
      - mysql
     links:
@@ -28,7 +28,7 @@ services:
   mysql:
     restart: always
     volumes:
-     - /Users/Shared/dev/dockerphabricator/srv/docker/phabricator/mysql:/var/lib/mysql
+     - VOLUMESROOT/mysql:/var/lib/mysql
     image: mysql:5.7.29
     environment:
      - MYSQL_ROOT_PASSWORD=phabricator

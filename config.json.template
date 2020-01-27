@@ -1,0 +1,342 @@
+{
+	"auth.require-approval": false,
+	"auth.require-email-verification": true,
+	"differential.allow-reopen": true,
+	"differential.always-allow-abandon": true,
+	"differential.always-allow-close": true,
+	"differential.fields": {
+		"differential:title": {
+			"key": "differential:title",
+			"disabled": false
+		},
+		"differential:summary": {
+			"key": "differential:summary",
+			"disabled": false
+		},
+		"differential:test-plan": {
+			"key": "differential:test-plan",
+			"disabled": true
+		},
+		"differential:author": {
+			"key": "differential:author",
+			"disabled": false
+		},
+		"differential:reviewers": {
+			"key": "differential:reviewers",
+			"disabled": false
+		},
+		"differential:project-reviewers": {
+			"key": "differential:project-reviewers",
+			"disabled": false
+		},
+		"differential:reviewed-by": {
+			"key": "differential:reviewed-by",
+			"disabled": false
+		},
+		"differential:subscribers": {
+			"key": "differential:subscribers",
+			"disabled": false
+		},
+		"differential:repository": {
+			"key": "differential:repository",
+			"disabled": false
+		},
+		"differential:lint": {
+			"key": "differential:lint",
+			"disabled": true
+		},
+		"phabricator:projects": {
+			"key": "phabricator:projects",
+			"disabled": false
+		},
+		"differential:unit": {
+			"key": "differential:unit",
+			"disabled": true
+		},
+		"differential:view-policy": {
+			"key": "differential:view-policy",
+			"disabled": false
+		},
+		"differential:edit-policy": {
+			"key": "differential:edit-policy",
+			"disabled": false
+		},
+		"differential:depends-on": {
+			"key": "differential:depends-on",
+			"disabled": false
+		},
+		"differential:dependencies": {
+			"key": "differential:dependencies",
+			"disabled": false
+		},
+		"differential:maniphest-tasks": {
+			"key": "differential:maniphest-tasks",
+			"disabled": false
+		},
+		"differential:commits": {
+			"key": "differential:commits",
+			"disabled": false
+		},
+		"differential:asana-representation": {
+			"key": "differential:asana-representation",
+			"disabled": false
+		},
+		"differential:changes-since-last-update": {
+			"key": "differential:changes-since-last-update",
+			"disabled": false
+		},
+		"differential:branch": {
+			"key": "differential:branch",
+			"disabled": false
+		},
+		"phabricator:blame-revision": {
+			"key": "phabricator:blame-revision",
+			"disabled": true
+		},
+		"differential:path": {
+			"key": "differential:path",
+			"disabled": true
+		},
+		"differential:host": {
+			"key": "differential:host",
+			"disabled": true
+		},
+		"phabricator:revert-plan": {
+			"key": "phabricator:revert-plan",
+			"disabled": true
+		},
+		"differential:apply-patch": {
+			"key": "differential:apply-patch",
+			"disabled": false
+		},
+		"differential:revision-id": {
+			"key": "differential:revision-id",
+			"disabled": false
+		},
+		"differential:arcanist-project": {
+			"key": "differential:arcanist-project",
+			"disabled": false
+		},
+		"differential:conflicts": {
+			"key": "differential:conflicts",
+			"disabled": false
+		},
+		"differential:required-signatures": {
+			"key": "differential:required-signatures",
+			"disabled": false
+		},
+		"differential:git-svn-id": {
+			"key": "differential:git-svn-id",
+			"disabled": false
+		},
+		"phabricator:auditors": {
+			"key": "phabricator:auditors",
+			"disabled": false
+		}
+	},
+	"policy.allow-public": true,
+	"maniphest.default-priority": 40,
+	"maniphest.priorities": {
+		"100": {
+			"name": "Unbreak Now!",
+			"keywords": [
+				"unbreak"
+			],
+			"short": "Unbreak!",
+			"color": "red"
+		},
+		"60": {
+			"name": "High",
+			"keywords": [
+				"high"
+			],
+			"short": "High",
+			"color": "red"
+		},
+		"40": {
+			"name": "Normal",
+			"keywords": [
+				"normal"
+			],
+			"short": "Normal",
+			"color": "green"
+		},
+		"20": {
+			"name": "Low",
+			"keywords": [
+				"low"
+			],
+			"short": "Low",
+			"color": "yellow"
+		}
+	},
+	"maniphest.statuses": {
+		"needstriage": {
+			"name": "Needs Triage",
+			"special": "default"
+		},
+		"needsuserinfo": {
+			"name": "Needs Information from User"
+		},
+		"needsdevelopertoreproduce": {
+			"name": "Needs Developer to Reproduce"
+		},
+		"confirmed": {
+			"name": "Confirmed"
+		},
+		"resolved": {
+			"name": "Resolved",
+			"name.full": "Closed, Resolved",
+			"closed": true,
+			"special": "closed",
+			"prefixes": [
+				"closed",
+				"closes",
+				"close",
+				"fix",
+				"fixes",
+				"fixed",
+				"resolve",
+				"resolves",
+				"resolved",
+				"bugfix"
+			],
+			"suffixes": [
+				"as resolved",
+				"as fixed"
+			]
+		},
+		"invalid": {
+			"name": "Invalid",
+			"name.full": "Closed, Invalid",
+			"closed": true,
+			"prefixes": [
+				"invalidate",
+				"invalidates",
+				"invalidated"
+			],
+			"suffixes": [
+				"as invalid"
+			]
+		},
+		"duplicate": {
+			"name": "Duplicate",
+			"name.full": "Closed, Duplicate",
+			"transaction.icon": "fa-times",
+			"special": "duplicate",
+			"closed": true
+		}
+	},
+	"maniphest.subtypes": [
+		{
+			"key": "default",
+			"name": "Report"
+		},
+		{
+			"key": "bug",
+			"name": "Bug"
+		},
+		{
+			"key": "knownissue",
+			"name": "Known Issue"
+		},
+		{
+			"key": "design",
+			"name": "Design"
+		},
+		{
+			"key": "todo",
+			"name": "To Do"
+		},
+		{
+			"key": "patch",
+			"name": "Patch"
+		}
+	],
+	"phabricator.application-settings": {
+		"PHID-APPS-PhabricatorDifferentialApplication": {
+			"policy": {
+				"edit": null,
+				"differential.default.view": "public"
+			}
+		},
+		"PHID-APPS-PhabricatorDiffusionApplication": {
+			"policy": {
+				"edit": null,
+				"diffusion.default.view": "public"
+			}
+		},
+		"PHID-APPS-PhabricatorHeraldApplication": {
+			"policy": {
+				"view": "admin",
+				"edit": null
+			}
+		},
+		"PHID-APPS-PhabricatorManiphestApplication": {
+			"policy": {
+				"edit": null,
+				"maniphest.edit.policies": "admin",
+				"maniphest.default.edit": MANIPHESTPLCY,
+				"maniphest.default.view": "public"
+			}
+		},
+		"PHID-APPS-PhabricatorPasteApplication": {
+			"policy": {
+				"edit": null,
+				"paste.default.view": "public"
+			}
+		},
+		"PHID-APPS-PhabricatorProjectApplication": {
+			"policy": {
+				"edit": null,
+				"project.create": PROJECTPLCY
+			}
+		},
+		"PHID-APPS-PhabricatorMacroApplication": {
+			"policy": {
+				"edit": null,
+				"macro.manage": MACROPLCY
+			}
+		},
+		"PHID-APPS-PhabricatorPeopleApplication": {
+			"policy": {
+				"view": null,
+				"edit": null,
+				"people.browse": "public"
+			}
+		},
+		"PHID-APPS-PhabricatorFilesApplication": {
+			"policy": {
+				"files.default.view": "public"
+			}
+		},
+		"PHID-APPS-PhabricatorPholioApplication": {
+			"policy": {
+				"pholio.default.edit": PHOLIOPLCY,
+				"pholio.default.view": "public"
+			}
+		}
+	},
+	"phabricator.serious-business": true,
+	"phabricator.timezone": "Europe/Amsterdam",
+	"translation.override": {
+		"[Paste]": "[developer.blender.org]",
+		"[Phriction]": "[developer.blender.org]",
+		"[Pholio]": "[developer.blender.org]",
+		"[Package]": "[developer.blender.org]",
+		"[Legalpad]": "[developer.blender.org]",
+		"[Files]": "[developer.blender.org]",
+		"[Diffusion]": "[developer.blender.org]",
+		"[Differential]": "[developer.blender.org]",
+		"[Conpherence]": "[developer.blender.org]",
+		"[Maniphest]": "[developer.blender.org]"
+	},
+	"ui.header-color": "blender",
+	"user.custom-field-definitions": {
+		"htaccess_password_hash": {
+			"name": "htaccess password hash",
+			"type": "text",
+			"hidden": true
+		}
+	}
+}

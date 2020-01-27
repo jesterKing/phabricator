@@ -1,0 +1,17 @@
+TOKEN="YOUR-CONDUIT-TOKEN-HERE"
+DEV=True # set to False for Blender.org stuff
+
+def fetch_policies():
+  policies_used = dict()
+  ### d.b.o policies
+  policies = [
+    ("MANIPHESTPLCY","PHID-PLCY-635czvlvk7qfvuwe63wi",),
+    ("PROJECTPLCY","PHID-PLCY-7kmegaobktyie23soff6",),
+    ("MACROPLCY","PHID-PROJ-2mzqsc6avm7hfpxuv7ub",),
+    ("PHOLIOPLCY","PHID-PROJ-hclk7tvd6pmpjmqastjl",)
+  ]
+
+  for plcy in policies:
+    policies_used[plcy[0]] = "null" if DEV else plcy[1]
+  
+  return policies_used

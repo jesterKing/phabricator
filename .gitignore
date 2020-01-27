@@ -1,0 +1,4 @@
+srv/
+*.swp
+config.json
+settings_config.py

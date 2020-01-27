@@ -133,7 +133,7 @@ source /config.saved
 sed -i "s/PHABRICATOR/$PHABRICATOR_VCS_USER/g" /etc/passwd
 sed "s/__PHABRICATOR_VCS_USER__/$PHABRICATOR_VCS_USER/g" /etc/phabricator-ssh/sshd_config.phabricator.template > /etc/phabricator-ssh/sshd_config.phabricator
 sed "s/__PHABRICATOR_VCS_USER__/$PHABRICATOR_VCS_USER/g" /etc/phabricator-ssh/phabricator-ssh-hook.sh.template > /etc/phabricator-ssh/phabricator-ssh-hook.sh
-sed "s/__PHABRICATOR_VCS_USER__/$PHABRICATOR_VCS_USER/g" /etc/php5/fpm/php-fpm.conf.template > /etc/php5/fpm/php-fpm.conf
+sed "s/__PHABRICATOR_VCS_USER__/$PHABRICATOR_VCS_USER/g" /etc/php7/fpm/php-fpm.conf.template > /etc/php7/fpm/php-fpm.conf
 chmod 755 /etc/phabricator-ssh/phabricator-ssh-hook.sh
 
 # Set up Phabricator
@@ -143,43 +143,43 @@ if [ "$SCRIPT_BEFORE_UPDATE" != "" ]; then
   popd
 fi
 
-if [ "$ENABLE_UPDATE_ON_START" == "true" ]; then
-  pushd /srv/phabricator/libphutil
-  if [ "$OVERRIDE_LIBPHUTIL_URI" != "" ]; then
-    sudo -u "$PHABRICATOR_VCS_USER" git remote set-url origin $OVERRIDE_LIBPHUTIL_URI
-  fi
-  sudo -u "$PHABRICATOR_VCS_USER" git fetch --all
-  if [ "$OVERRIDE_LIBPHUTIL_BRANCH" != "" ]; then
-    sudo -u "$PHABRICATOR_VCS_USER" git checkout $OVERRIDE_LIBPHUTIL_BRANCH
-  else
-    sudo -u "$PHABRICATOR_VCS_USER" git pull
-  fi
-  popd
-
-  pushd /srv/phabricator/arcanist
-  if [ "$OVERRIDE_ARCANIST_URI" != "" ]; then
-    sudo -u "$PHABRICATOR_VCS_USER" git remote set-url origin $OVERRIDE_ARCANIST_URI
-  fi
-  sudo -u "$PHABRICATOR_VCS_USER" git fetch --all
-  if [ "$OVERRIDE_ARCANIST_BRANCH" != "" ]; then
-    sudo -u "$PHABRICATOR_VCS_USER" git checkout $OVERRIDE_ARCANIST_BRANCH
-  else
-    sudo -u "$PHABRICATOR_VCS_USER" git pull
-  fi
-  popd
-
-  pushd /srv/phabricator/phabricator
-  if [ "$OVERRIDE_PHABRICATOR_URI" != "" ]; then
-    sudo -u "$PHABRICATOR_VCS_USER" git remote set-url origin $OVERRIDE_PHABRICATOR_URI
-  fi
-  sudo -u "$PHABRICATOR_VCS_USER" git fetch --all
-  if [ "$OVERRIDE_PHABRICATOR_BRANCH" != "" ]; then
-    sudo -u "$PHABRICATOR_VCS_USER" git checkout $OVERRIDE_PHABRICATOR_BRANCH
-  else
-    sudo -u "$PHABRICATOR_VCS_USER" git pull
-  fi
-  popd
-fi
+#if [ "$ENABLE_UPDATE_ON_START" == "true" ]; then
+#  pushd /srv/phabricator/libphutil
+#  if [ "$OVERRIDE_LIBPHUTIL_URI" != "" ]; then
+#    sudo -u "$PHABRICATOR_VCS_USER" git remote set-url origin $OVERRIDE_LIBPHUTIL_URI
+#  fi
+#  sudo -u "$PHABRICATOR_VCS_USER" git fetch --all
+#  if [ "$OVERRIDE_LIBPHUTIL_BRANCH" != "" ]; then
+#    sudo -u "$PHABRICATOR_VCS_USER" git checkout $OVERRIDE_LIBPHUTIL_BRANCH
+#  else
+#    sudo -u "$PHABRICATOR_VCS_USER" git pull
+#  fi
+#  popd
+#
+#  pushd /srv/phabricator/arcanist
+#  if [ "$OVERRIDE_ARCANIST_URI" != "" ]; then
+#    sudo -u "$PHABRICATOR_VCS_USER" git remote set-url origin $OVERRIDE_ARCANIST_URI
+#  fi
+#  sudo -u "$PHABRICATOR_VCS_USER" git fetch --all
+#  if [ "$OVERRIDE_ARCANIST_BRANCH" != "" ]; then
+#    sudo -u "$PHABRICATOR_VCS_USER" git checkout $OVERRIDE_ARCANIST_BRANCH
+#  else
+#    sudo -u "$PHABRICATOR_VCS_USER" git pull
+#  fi
+#  popd
+#
+#  pushd /srv/phabricator/phabricator
+#  if [ "$OVERRIDE_PHABRICATOR_URI" != "" ]; then
+#    sudo -u "$PHABRICATOR_VCS_USER" git remote set-url origin $OVERRIDE_PHABRICATOR_URI
+#  fi
+#  sudo -u "$PHABRICATOR_VCS_USER" git fetch --all
+#  if [ "$OVERRIDE_PHABRICATOR_BRANCH" != "" ]; then
+#    sudo -u "$PHABRICATOR_VCS_USER" git checkout $OVERRIDE_PHABRICATOR_BRANCH
+#  else
+#    sudo -u "$PHABRICATOR_VCS_USER" git pull
+#  fi
+#  popd
+#fi
 
 pushd /srv/phabricator/phabricator
 if [ "$MYSQL_HOST" != "" ]; then
@@ -258,7 +258,7 @@ unset APHLICT_PORT
 popd
 
 if [ "$ENABLE_APCU" == "true" ]; then
-  cat >/etc/php5/conf.d/apcu.ini <<EOF
+  cat >/etc/php7/conf.d/apcu.ini <<EOF
 extension=apcu.so
 EOF
 fi

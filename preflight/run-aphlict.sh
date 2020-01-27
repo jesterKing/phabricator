@@ -12,8 +12,10 @@ if [ ! -f /baked ]; then
   chown "$PHABRICATOR_VCS_USER:wwwgrp-phabricator" /var/log/aphlict.log
 
   # Copy ws module from global install
-  cp -Rv /usr/lib/node_modules /srv/phabricator/phabricator/support/aphlict/server/
-  chown -Rv "$PHABRICATOR_VCS_USER:wwwgrp-phabricator" /srv/phabricator/phabricator/support/aphlict/server/node_modules
+  #cp -Rv /usr/lib/node_modules /srv/phabricator/phabricator/support/aphlict/server/
+	cd /srv/phabricator/phabricator/support/aphlict/server/
+	sudo su - "$PHABRICATOR_VCS_USER" npm install ws
+  #chown -Rv "$PHABRICATOR_VCS_USER:wwwgrp-phabricator" /srv/phabricator/phabricator/support/aphlict/server/node_modules
 
   # Configure the Phabricator notification server
   cat >/srv/aphlict.conf <<EOF
@@ -52,8 +54,15 @@ fi
 if [ ! -f /is-baking ]; then
   # Start the Phabricator notification server
   pushd /srv/phabricator/phabricator
-  sudo -u "$PHABRICATOR_VCS_USER" bin/aphlict start --config=/srv/aphlict.conf
+	if [ ! -f /starting-aphlict ]; then
+		touch /starting-aphlict
+		sudo -u "$PHABRICATOR_VCS_USER" bin/aphlict start --config=/srv/aphlict.conf
+	else
+		sudo -u "$PHABRICATOR_VCS_USER" bin/aphlict restart --config=/srv/aphlict.conf
+	fi
   popd
+
+
 
   set +e
   set +x
@@ -75,5 +84,8 @@ if [ ! -f /is-baking ]; then
     sleep 1
   done
 
+	if [ -f /starting-aphlict ]; then
+		rm /starting-aphlict
+	fi
   exit 0
 fi
