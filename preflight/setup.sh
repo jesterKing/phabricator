@@ -28,6 +28,7 @@ mv 15-https-conf /app/startup/15-https-conf
 
 mv php-fpm.conf /etc/php7/fpm/php-fpm.conf.template
 mv php.ini /etc/php7/fpm/php.ini
+mv zlib.ini /etc/php7/conf.d/zlib.ini
 
 mv supervisord.conf /app/supervisord.conf
 mv init.sh /app/init.sh
