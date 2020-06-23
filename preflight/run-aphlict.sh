@@ -12,10 +12,8 @@ if [ ! -f /baked ]; then
   chown "$PHABRICATOR_VCS_USER:wwwgrp-phabricator" /var/log/aphlict.log
 
   # Copy ws module from global install
-  #cp -Rv /usr/lib/node_modules /srv/phabricator/phabricator/support/aphlict/server/
 	cd /srv/phabricator/phabricator/support/aphlict/server/
 	sudo su - "$PHABRICATOR_VCS_USER" npm install ws
-  #chown -Rv "$PHABRICATOR_VCS_USER:wwwgrp-phabricator" /srv/phabricator/phabricator/support/aphlict/server/node_modules
 
   # Configure the Phabricator notification server
   cat >/srv/aphlict.conf <<EOF
